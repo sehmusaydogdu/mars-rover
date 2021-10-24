@@ -24,30 +24,29 @@ public class Process {
 		rightDirections.put(Direction.W, Direction.N);
 	}
 
+	/** Plateau info */
+	private Plateau plateau;
+
 	/** Specifies how the rover should move. */
 	private String command;
 
 	/** Rover info */
 	private Rover rover;
 
-	public Process(Rover rover, String command) {
+	public Process(Plateau plateau, Rover rover, String command) {
+		this.plateau = plateau;
 		this.rover = rover;
 		this.command = command;
 	}
 
 	public Rover process() {
-		log.info("input [{}]", rover.toString());
-
+		log.info("input  [{}]", rover.toString());
 		char[] commands = command.toCharArray();
 		for (char direction : commands) {
 			switch (direction) {
-			case 'L' -> rover.setDirection(leftDirections.get(rover.getDirection()));
-			case 'R' -> rover.setDirection(rightDirections.get(rover.getDirection()));
-			case 'M' -> {
-				Rover newRover = move(rover);
-				rover.setPositionX(newRover.getPositionX());
-				rover.setPositionY(newRover.getPositionY());
-			}
+			case 'L' -> turnLeftDirection();
+			case 'R' -> turnRightDirection();
+			case 'M' -> move();
 			default -> throw new IllegalArgumentException("Unexpected command value: " + command);
 			}
 		}
@@ -55,15 +54,26 @@ public class Process {
 		return rover;
 	}
 
-	private Rover move(Rover rover) {
+	private void turnLeftDirection() {
+		rover.setDirection(leftDirections.get(rover.getDirection()));
+	}
+
+	private void turnRightDirection() {
+		rover.setDirection(rightDirections.get(rover.getDirection()));
+	}
+
+	private void move() {
 		Direction direction = rover.getDirection();
-		switch (direction) {
-		case N -> rover.setPositionY(rover.getPositionY() + 1);
-		case E -> rover.setPositionX(rover.getPositionX() + 1);
-		case S -> rover.setPositionY(rover.getPositionY() - 1);
-		case W -> rover.setPositionX(rover.getPositionX() - 1);
-		default -> throw new IllegalArgumentException("Unexpected direction value: " + direction);
+		if (direction.equals(Direction.N) && (rover.getPositionY() + 1) <= plateau.getHeight()) {
+			rover.setPositionY(rover.getPositionY() + 1);
+		} else if (direction.equals(Direction.E) && (rover.getPositionX() + 1) <= plateau.getWidth()) {
+			rover.setPositionX(rover.getPositionX() + 1);
+		} else if (direction.equals(Direction.S) && (rover.getPositionY() - 1) >= 0) {
+			rover.setPositionY(rover.getPositionY() - 1);
+		} else if (direction.equals(Direction.W) && (rover.getPositionX() - 1) >= 0) {
+			rover.setPositionX(rover.getPositionX() - 1);
+		} else {
+			log.warn("Can't go on.");
 		}
-		return rover;
 	}
 }

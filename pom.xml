@@ -7,7 +7,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.5.6</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath />
 	</parent>
 
 	<groupId>com.mars.rover</groupId>
@@ -15,7 +15,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<name>mars-rover</name>
-	<description>Mars Rover</description>
+	<description>Mars Rover Problem Solutions</description>
 
 	<properties>
 		<java.version>17</java.version>
@@ -42,14 +42,4 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
 </project>

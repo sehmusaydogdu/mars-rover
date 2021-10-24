@@ -39,7 +39,7 @@ public class Process {
 		this.command = command;
 	}
 
-	public Rover process() {
+	public Rover execute() {
 		log.info("input  [{}]", rover.toString());
 		char[] commands = command.toCharArray();
 		for (char direction : commands) {

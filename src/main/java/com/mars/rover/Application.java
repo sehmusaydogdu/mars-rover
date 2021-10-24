@@ -4,7 +4,15 @@ public class Application {
 
 	public static void main(String[] args) {
 		Plateau plateau = new Plateau(5, 5);
-		new Process(plateau, new Rover(1, 2, Direction.N), "LMLMLMLMM").process();
-		new Process(plateau, new Rover(3, 3, Direction.E), "MMRMMRMRRM").process();
+
+		Rover rover = new Rover(1, 2, Direction.N);
+		String command = "LMLMLMLMM";
+		Process process = new Process(plateau, rover, command);
+		process.execute();
+
+		rover = new Rover(3, 3, Direction.E);
+		command = "MMRMMRMRRM";
+		process = new Process(plateau, rover, command);
+		process.execute();
 	}
 }

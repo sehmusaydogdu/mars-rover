@@ -1,14 +1,14 @@
 package com.mars.rover;
 
-import java.util.EnumMap;
-
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.EnumMap;
 
 @Slf4j
 public class Process {
 
-	private static EnumMap<Direction, Direction> leftDirections = new EnumMap<>(Direction.class);
-	private static EnumMap<Direction, Direction> rightDirections = new EnumMap<>(Direction.class);
+	private static final EnumMap<Direction, Direction> leftDirections = new EnumMap<>(Direction.class);
+	private static final EnumMap<Direction, Direction> rightDirections = new EnumMap<>(Direction.class);
 
 	static {
 		/* turn left direction */

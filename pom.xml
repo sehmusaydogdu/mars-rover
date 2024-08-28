@@ -6,19 +6,19 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.6</version>
+		<version>3.3.3</version>
 		<relativePath />
 	</parent>
 
 	<groupId>com.mars.rover</groupId>
 	<artifactId>mars-rover</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 
 	<name>mars-rover</name>
 	<description>Mars Rover Problem Solutions</description>
 
 	<properties>
-		<java.version>17</java.version>
+		<java.version>21</java.version>
 	</properties>
 
 	<dependencies>
